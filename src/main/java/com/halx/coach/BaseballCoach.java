@@ -4,10 +4,20 @@ import com.halx.fortune.FortuneService;
 
 public class BaseballCoach implements Coach {
 
-    FortuneService fortuneService;
+    private FortuneService fortuneService;
+
+    public BaseballCoach() {
+        System.out.println("BaseBallCoach : In no-arg constructor needed for setter DI");
+    }
 
     public BaseballCoach(FortuneService theFortuneService) {
+        System.out.println("BaseBallCoach : In arg constructor");
         this.fortuneService = theFortuneService;
+    }
+
+    public void setFortuneService(FortuneService fortuneService) {
+        System.out.println("BaseBallCoach : In fortuneService setter method");
+        this.fortuneService = fortuneService;
     }
 
     @Override
