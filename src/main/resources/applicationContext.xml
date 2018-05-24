@@ -16,7 +16,7 @@
 
         <!--Setter injection-->
         <property name="fortuneService" ref="myFortuneService"/>
-
+        <property name="teamName" value="BlackBirdTeam"/>
     </bean>
 
 

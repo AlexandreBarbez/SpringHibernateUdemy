@@ -5,6 +5,7 @@ import com.halx.fortune.FortuneService;
 public class TrackCoach implements Coach {
 
     private FortuneService fortuneService;
+    private String teamName;
 
     public TrackCoach() {
         System.out.println("TrackCoach : In no-arg constructor required for setter DI");
@@ -20,9 +21,13 @@ public class TrackCoach implements Coach {
         this.fortuneService = fortuneService;
     }
 
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
     @Override
     public String getDailyWorkout() {
-        return "Run !!";
+        return "Run for the "+this.teamName+" !!";
     }
 
     @Override
