@@ -5,14 +5,15 @@ import com.halx.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 @Component
+@Scope("prototype")
 public class BaseballCoach implements Coach {
 
-    @Autowired
-    @Qualifier("happyFortuneService")
+
     private FortuneService fortuneService;
 
     @Value("${bird.team}")
@@ -22,8 +23,9 @@ public class BaseballCoach implements Coach {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In no-arg constructor needed for setter DI");
     }
 
-    public BaseballCoach(FortuneService theFortuneService) {
-        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In arg constructor setting up "+fortuneService+" object");
+    @Autowired
+    public BaseballCoach(@Qualifier("happyFortuneService")FortuneService theFortuneService) {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In arg constructor setting up "+theFortuneService+" object");
         this.fortuneService = theFortuneService;
     }
 
