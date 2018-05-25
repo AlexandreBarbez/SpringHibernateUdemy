@@ -13,7 +13,6 @@ import java.util.Date;
 @Scope("prototype")
 public class BaseballCoach implements Coach {
 
-
     private FortuneService fortuneService;
 
     @Value("${bird.team}")
@@ -23,13 +22,14 @@ public class BaseballCoach implements Coach {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In no-arg constructor needed for setter DI");
     }
 
-    @Autowired
-    public BaseballCoach(@Qualifier("happyFortuneService")FortuneService theFortuneService) {
+
+    public BaseballCoach(FortuneService theFortuneService) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In arg constructor setting up "+theFortuneService+" object");
         this.fortuneService = theFortuneService;
     }
 
-    public void setFortuneService(FortuneService fortuneService) {
+    @Autowired
+    public void setFortuneService(@Qualifier("happyFortuneService")FortuneService fortuneService) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In fortuneService setter method setting up "+fortuneService+" object");
         this.fortuneService = fortuneService;
     }

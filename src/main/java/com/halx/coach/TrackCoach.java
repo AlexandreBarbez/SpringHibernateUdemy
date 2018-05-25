@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class TrackCoach implements Coach {
 
-
     private FortuneService fortuneService;
 
     @Value("${dog.team}")
@@ -20,13 +19,14 @@ public class TrackCoach implements Coach {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In no-arg constructor required for setter DI");
     }
 
-    @Autowired
-    public TrackCoach(@Qualifier("motivationalFortuneService") FortuneService theFortuneService) {
+
+    public TrackCoach(FortuneService theFortuneService) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In arg constructor setting up "+theFortuneService+" object");
      this.fortuneService = theFortuneService;
     }
 
-    public void setFortuneService(FortuneService fortuneService) {
+    @Autowired
+    public void setFortuneService(@Qualifier("motivationalFortuneService") FortuneService fortuneService) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In FortuneService setter setting up "+fortuneService+" object");
         this.fortuneService = fortuneService;
     }
