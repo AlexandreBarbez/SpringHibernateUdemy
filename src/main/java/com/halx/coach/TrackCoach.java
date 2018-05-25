@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TrackCoach implements Coach {
 
+    @Autowired
+    @Qualifier("motivationalFortuneService")
     private FortuneService fortuneService;
 
     @Value("${dog.team}")
@@ -25,8 +27,8 @@ public class TrackCoach implements Coach {
      this.fortuneService = theFortuneService;
     }
 
-    @Autowired
-    public void setFortuneService(@Qualifier("motivationalFortuneService") FortuneService fortuneService) {
+
+    public void setFortuneService( FortuneService fortuneService) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In FortuneService setter setting up "+fortuneService+" object");
         this.fortuneService = fortuneService;
     }
