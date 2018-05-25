@@ -17,7 +17,8 @@
     </bean>
 
     <bean id="myCoach"
-        class="com.halx.coach.TrackCoach">
+        class="com.halx.coach.TrackCoach"
+        scope="prototype"><!--default scope is singleton = one unique instance shared // prototype is one new object for each request of an instance-->
 
         <!--Constructor injection-->
         <!--<constructor-arg ref="myFortuneService"/>-->

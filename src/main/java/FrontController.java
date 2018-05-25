@@ -29,11 +29,18 @@ public class FrontController {
     @RequestMapping("/coach")
     @ResponseBody
     String printCoachOrder(){
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Coach theCoach = applicationContext.getBean("myCoach", Coach.class);
-        applicationContext.close();
-        return theCoach.getDailyWorkout() + theCoach.getDailyFortune();
 
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+        Coach theFirstCoach = applicationContext.getBean("myCoach", Coach.class);
+        Coach theSecondCoach = applicationContext.getBean("myCoach", Coach.class);
+
+        applicationContext.close();
+
+        String firstCoachOrder = new StringBuilder().append(theFirstCoach.getDailyWorkout()).append(theFirstCoach.getDailyFortune()).append("Object reference : ").append(theFirstCoach).toString();
+        String secondCoachOrder = new StringBuilder().append(theSecondCoach.getDailyWorkout()).append(theSecondCoach.getDailyFortune()).append("Object reference : ").append(theSecondCoach).toString();
+
+        return new StringBuilder().append(firstCoachOrder).append("<br>").append(secondCoachOrder).toString();
     }
 
     public static void main(String[] args) {
