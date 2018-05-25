@@ -30,14 +30,19 @@ public class FrontController {
 
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        Coach theFirstCoach = applicationContext.getBean("myCoach", Coach.class);
-        Coach theSecondCoach = applicationContext.getBean("myCoach", Coach.class);
+        Coach theFirstBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
+        Coach theSecondBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
+        String firstBBCoachOrder = theFirstBBCoach.getDailyWorkout()+" "+theFirstBBCoach.getDailyFortune()+"Object reference : "+theFirstBBCoach;
+        String secondBBCoachOrder = theSecondBBCoach.getDailyWorkout()+" "+theSecondBBCoach.getDailyFortune()+"Object reference : "+theSecondBBCoach;
 
-        String firstCoachOrder = theFirstCoach.getDailyWorkout()+" "+theFirstCoach.getDailyFortune()+"Object reference : "+theFirstCoach;
-        String secondCoachOrder = theSecondCoach.getDailyWorkout()+" "+theSecondCoach.getDailyFortune()+"Object reference : "+theSecondCoach;
+        Coach theFirstTCoach = applicationContext.getBean("trackCoach", Coach.class);
+        Coach theSecondTCoach = applicationContext.getBean("trackCoach", Coach.class);
+        String firstTCoachOrder = theFirstTCoach.getDailyWorkout()+" "+theFirstTCoach.getDailyFortune()+"Object reference : "+theFirstTCoach;
+        String secondTCoachOrder = theSecondTCoach.getDailyWorkout()+" "+theSecondTCoach.getDailyFortune()+"Object reference : "+theSecondTCoach;
+
 
         applicationContext.close();
-        return firstCoachOrder+"<br>"+secondCoachOrder;
+        return firstBBCoachOrder+"<br>"+secondBBCoachOrder+"<br><br>"+firstTCoachOrder+"<br>"+secondTCoachOrder;
     }
 
     public static void main(String[] args) {

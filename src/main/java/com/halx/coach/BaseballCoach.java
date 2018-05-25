@@ -2,13 +2,21 @@ package com.halx.coach;
 
 import com.halx.fortune.FortuneService;
 import com.halx.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
-
+@Component
 public class BaseballCoach implements Coach {
 
+    @Autowired
+    @Qualifier("happyFortuneService")
     private FortuneService fortuneService;
-    private String teamName;
+
+    @Value("${bird.team}")
+    private String teamName ;
 
     public BaseballCoach() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In no-arg constructor needed for setter DI");
