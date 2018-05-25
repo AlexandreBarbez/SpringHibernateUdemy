@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
 public class TrackCoach implements Coach {
 
@@ -15,7 +18,7 @@ public class TrackCoach implements Coach {
     private FortuneService fortuneService;
 
     @Value("${dog.team}")
-    private String teamName = "";
+    private String teamName ;
 
     public TrackCoach() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In no-arg constructor required for setter DI");
@@ -47,10 +50,12 @@ public class TrackCoach implements Coach {
         return this.fortuneService.provideFortune();
     }
 
+    @PostConstruct
     public void doStartupStuff() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In startup method launched with bean initialisation");
     }
 
+    @PreDestroy
     public void doCleanUpStuff() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In cleanup method launched with bean destruction");
     }
