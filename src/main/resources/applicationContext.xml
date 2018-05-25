@@ -16,9 +16,14 @@
           class="com.halx.fortune.HappyFortuneService">
     </bean>
 
+    <!--Be aware that in prototype scope the destroy method is not called because the container instantiates,
+     configures, and otherwise assembles a prototype object, and hands it to the client, with no further record
+     of that prototype instance.-->
     <bean id="myCoach"
         class="com.halx.coach.BaseballCoach"
-        scope="prototype"><!--default scope is singleton = one unique instance shared // prototype is one new object for each request of an instance-->
+        scope="singleton"
+        init-method="doStartupStuff"
+        destroy-method="doCleanUpStuff">
 
         <!--Constructor injection-->
         <!--<constructor-arg ref="myFortuneService"/>-->
@@ -26,6 +31,7 @@
         <!--Setter injection-->
         <property name="fortuneService" ref="myFortuneService"/>
         <property name="teamName" value="${bird.team}"/>
+
     </bean>
 
 

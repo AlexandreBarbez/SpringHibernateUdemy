@@ -33,11 +33,10 @@ public class FrontController {
         Coach theFirstCoach = applicationContext.getBean("myCoach", Coach.class);
         Coach theSecondCoach = applicationContext.getBean("myCoach", Coach.class);
 
-        applicationContext.close();
-
         String firstCoachOrder = theFirstCoach.getDailyWorkout()+" "+theFirstCoach.getDailyFortune()+"Object reference : "+theFirstCoach;
         String secondCoachOrder = theSecondCoach.getDailyWorkout()+" "+theSecondCoach.getDailyFortune()+"Object reference : "+theSecondCoach;
 
+        applicationContext.close();
         return firstCoachOrder+"<br>"+secondCoachOrder;
     }
 

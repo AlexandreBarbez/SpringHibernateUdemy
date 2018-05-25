@@ -38,5 +38,14 @@ public class BaseballCoach implements Coach {
         return this.fortuneService.provideFortune();
     }
 
+    public void doStartupStuff() {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In startup method launched with bean initialisation");
+    }
+
+    public void doCleanUpStuff() {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - BaseBallCoach : In cleanup method launched with bean destruction");
+    }
+
+
 
 }

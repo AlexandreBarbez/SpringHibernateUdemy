@@ -35,4 +35,12 @@ public class TrackCoach implements Coach {
     public String getDailyFortune() {
         return this.fortuneService.provideFortune();
     }
+
+    public void doStartupStuff() {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In startup method launched with bean initialisation");
+    }
+
+    public void doCleanUpStuff() {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In cleanup method launched with bean destruction");
+    }
 }
