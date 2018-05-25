@@ -1,6 +1,7 @@
 package com.halx.coach;
 
 import com.halx.fortune.FortuneService;
+import com.halx.utils.Utils;
 
 public class TrackCoach implements Coach {
 
@@ -8,16 +9,16 @@ public class TrackCoach implements Coach {
     private String teamName;
 
     public TrackCoach() {
-        System.out.println("TrackCoach : In no-arg constructor required for setter DI");
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In no-arg constructor required for setter DI");
     }
 
     public TrackCoach(FortuneService theFortuneService) {
-        System.out.println("TrackCoach : In arg constructor");
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In arg constructor setting up "+fortuneService+" object");
      this.fortuneService = theFortuneService;
     }
 
     public void setFortuneService(FortuneService fortuneService) {
-        System.out.println("TrackCoach : In FortuneService setter");
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - TrackCoach : In FortuneService setter setting up "+fortuneService+" object");
         this.fortuneService = fortuneService;
     }
 

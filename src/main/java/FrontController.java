@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @EnableAutoConfiguration
 public class FrontController {
 
-
-
     /**
      * Main mapping on "/" url
      * @return the message to be printed when visiting "/" url on server
@@ -24,7 +22,7 @@ public class FrontController {
 
     /**
      * Mapping for Coach exercise on IoC and DI
-     * @return
+     * @return the message to be printed when visiting "/coach" url on server
      */
     @RequestMapping("/coach")
     @ResponseBody
@@ -37,10 +35,10 @@ public class FrontController {
 
         applicationContext.close();
 
-        String firstCoachOrder = new StringBuilder().append(theFirstCoach.getDailyWorkout()).append(theFirstCoach.getDailyFortune()).append("Object reference : ").append(theFirstCoach).toString();
-        String secondCoachOrder = new StringBuilder().append(theSecondCoach.getDailyWorkout()).append(theSecondCoach.getDailyFortune()).append("Object reference : ").append(theSecondCoach).toString();
+        String firstCoachOrder = theFirstCoach.getDailyWorkout()+" "+theFirstCoach.getDailyFortune()+"Object reference : "+theFirstCoach;
+        String secondCoachOrder = theSecondCoach.getDailyWorkout()+" "+theSecondCoach.getDailyFortune()+"Object reference : "+theSecondCoach;
 
-        return new StringBuilder().append(firstCoachOrder).append("<br>").append(secondCoachOrder).toString();
+        return firstCoachOrder+"<br>"+secondCoachOrder;
     }
 
     public static void main(String[] args) {
