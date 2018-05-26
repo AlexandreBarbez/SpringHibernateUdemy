@@ -1,4 +1,4 @@
-package com.halx.utils;
+package com.halx.spring.utils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

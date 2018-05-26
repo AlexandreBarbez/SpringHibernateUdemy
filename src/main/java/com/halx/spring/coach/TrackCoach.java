@@ -1,7 +1,7 @@
-package com.halx.coach;
+package com.halx.spring.coach;
 
-import com.halx.fortune.FortuneService;
-import com.halx.utils.Utils;
+import com.halx.spring.fortune.FortuneService;
+import com.halx.spring.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;

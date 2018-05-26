@@ -1,4 +1,4 @@
-package com.halx.fortune;
+package com.halx.spring.fortune;
 
 import org.springframework.stereotype.Component;
 

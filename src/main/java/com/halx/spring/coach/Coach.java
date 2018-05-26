@@ -1,4 +1,4 @@
-package com.halx.coach;
+package com.halx.spring.coach;
 
 public interface Coach {
     String getDailyWorkout();
