@@ -1,6 +1,8 @@
+import com.halx.SportConfig;
 import com.halx.coach.Coach;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,7 @@ public class FrontController {
     @ResponseBody
     String printCoachOrder(){
 
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SportConfig.class);
 
         Coach theFirstBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
         Coach theSecondBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
