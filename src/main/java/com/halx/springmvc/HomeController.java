@@ -1,12 +1,17 @@
 package com.halx.springmvc;
 
 import com.halx.spring.utils.Utils;
+import com.halx.springmvc.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private Student student;
 
     @RequestMapping("/")
     public String showHomePage(){
@@ -14,11 +19,18 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/test")
-    @ResponseBody
-    public String showTestPage(){
-        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - HomeController => forwarding request to test template");
-        return "test";
+    @GetMapping("/loginForm")
+    public String showForm(Model model){
+        model.addAttribute("student",student);
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - HomeController => forwarding request to loginForm template");
+        return "loginForm";
     }
+
+    @PostMapping("/loginForm")
+    public String processForm(@ModelAttribute Student student){
+        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - HomeController => forwarding request to helloWorld template");
+        return "helloWorld";
+    }
+
 
 }
