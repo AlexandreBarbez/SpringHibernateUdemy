@@ -1,26 +1,14 @@
 package com.halx.spring;
 
+import com.halx.AppConfig;
 import com.halx.spring.coach.Coach;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@EnableAutoConfiguration
 public class SportController {
-
-    /**
-     * Main mapping on "/" url
-     * @return the message to be printed when visiting "/" url on server
-     */
-    @RequestMapping("/")
-    @ResponseBody
-    String home(){
-        return "It works";
-    }
 
     /**
      * Mapping for Coach exercise on IoC and DI
@@ -28,9 +16,9 @@ public class SportController {
      */
     @RequestMapping("/coach")
     @ResponseBody
-    String printCoachOrder(){
+    public String printCoachOrder(){
 
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SportConfig.class);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
         Coach theFirstBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
         Coach theSecondBBCoach = applicationContext.getBean("baseballCoach", Coach.class);
@@ -47,7 +35,5 @@ public class SportController {
         return "<h2>Two different objects because of the prototype scope of the Spring bean :</h2>"+firstBBCoachOrder+"<br><br>"+secondBBCoachOrder+"<br><br><h2>Two time calling the same object because basic scope setting is Singleton : </h2>"+firstTCoachOrder+"<br><br>"+secondTCoachOrder;
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(SportController.class, args);
-    }
+
 }
