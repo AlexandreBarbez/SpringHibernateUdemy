@@ -43,4 +43,10 @@ public class HomeController {
 
         return "helloWorld";
     }
+
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String processForm(){
+        return "hello you from HomeController";
+    }
 }
