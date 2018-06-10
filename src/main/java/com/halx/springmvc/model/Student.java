@@ -7,18 +7,28 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class Student {
-    private String name;
+    private String firstName;
+    private String lastName;
 
     public Student() {
-        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - Student : in no-arg constructor");
+        System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in no-arg constructor");
     }
 
-    public void setName(String name) {
-        System.out.println(Utils.getDateFormattedLikeSpringBoot()+" - Student : in setter to instantiate Student with "+name+" as name.");
-        this.name = name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getName() {
-        return name;
+    public void setFirstName(String firstName) {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in setter to instantiate Student with " + firstName + " as firstName.");
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in setter to instantiate Student with " + lastName + " as lastName.");
+        this.lastName = lastName;
     }
 }
