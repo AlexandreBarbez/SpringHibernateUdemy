@@ -9,6 +9,10 @@ public class Student {
     private String firstName;
     private String lastName;
 
+
+
+    private String country;
+
     public Student() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in no-arg constructor for "+this);
     }
@@ -33,5 +37,13 @@ public class Student {
     public void setLastName(String lastName) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in "+this+" setter to instantiate Student with " + lastName + " as lastName.");
         this.lastName = lastName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
