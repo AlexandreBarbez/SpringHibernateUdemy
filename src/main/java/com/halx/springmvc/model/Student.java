@@ -1,15 +1,24 @@
 package com.halx.springmvc.model;
 
 import com.halx.spring.utils.Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import java.util.LinkedHashMap;
+
 @Component
+@PropertySource("classpath:countries.properties")
+@ConfigurationProperties("country")
 public class Student {
     private String firstName;
     private String lastName;
 
-
+    LinkedHashMap<String, String> countriesOptions;
 
     private String country;
 
@@ -46,4 +55,13 @@ public class Student {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public LinkedHashMap<String, String> getCountriesOptions() {
+        return countriesOptions;
+    }
+
+    public void setCountriesOptions(LinkedHashMap<String, String> countryOptions) {
+        this.countriesOptions = countryOptions;
+    }
+
 }
