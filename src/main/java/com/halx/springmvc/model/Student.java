@@ -1,33 +1,30 @@
 package com.halx.springmvc.model;
 
 import com.halx.spring.utils.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 
 @Component
-@PropertySource("classpath:countries.properties")
-@ConfigurationProperties("country")
+@PropertySource("classpath:student.properties")
+@ConfigurationProperties("student")
 public class Student {
     private String firstName;
     private String lastName;
+    private String language;
+    private String country;
 
     LinkedHashMap<String, String> countriesOptions;
+    LinkedHashMap<String, String> languagesOptions;
 
-    private String country;
+    String[] operatingSystems;
 
     public Student() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in no-arg constructor for "+this);
     }
-
     public String getFirstName() {
-
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in Student "+this+" getter to return " + firstName + " as firstName.");
         return firstName;
     }
@@ -37,8 +34,15 @@ public class Student {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLanguage() {
+        return language;
+    }
 
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getLastName() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in Student "+this+" getter to return " + lastName + " as lastName.");
         return lastName;
     }
@@ -60,8 +64,13 @@ public class Student {
         return countriesOptions;
     }
 
-    public void setCountriesOptions(LinkedHashMap<String, String> countryOptions) {
-        this.countriesOptions = countryOptions;
-    }
+    public void setCountriesOptions(LinkedHashMap<String, String> countryOptions) { this.countriesOptions = countryOptions; }
 
+    public LinkedHashMap<String, String> getLanguagesOptions() { return languagesOptions; }
+
+    public void setLanguagesOptions(LinkedHashMap<String, String> languagesOptions) { this.languagesOptions = languagesOptions; }
+
+    public String[] getOperatingSystems() { return operatingSystems; }
+
+    public void setOperatingSystems(String[] operatingSystems) { this.operatingSystems = operatingSystems; }
 }
