@@ -5,14 +5,21 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashMap;
 
 @Component
 @PropertySource("classpath:student.properties")
 @ConfigurationProperties("student")
 public class Student {
+    @NotNull
+    @Size(min=1, message="is required")
     private String firstName;
+    @NotNull
+    @Size(min=1, message="is required")
     private String lastName;
+
     private String language;
     private String country;
 
