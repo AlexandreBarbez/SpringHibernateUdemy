@@ -23,9 +23,11 @@ public class Student {
     private String language;
     private String country;
 
+    @NotNull(message="PostalCode is required")
     @Pattern(regexp = "^[a-z1-Z0-9]{5}", message="only 5 chars/digits")
     private String postalCode;
 
+    @NotNull(message="Percentage is required")
     @Min(value=0, message=" must be > 0")
     @Max(value=100, message=" must be <= 100")
     private int masterPercentage;

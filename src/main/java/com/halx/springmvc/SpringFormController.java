@@ -29,6 +29,10 @@ public class SpringFormController {
 
     @RequestMapping("/processForm")
     public String processSpringForm(@Valid @ModelAttribute("student") Student theReturnedStudent, BindingResult bindingResult, Model theModel){
+
+        System.out.println("Binding result : "+bindingResult);
+        System.out.println("\n\n\n");
+
         String mapping;
         if(bindingResult.hasErrors()){
             mapping = "jsp/student-form";
