@@ -5,23 +5,30 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.LinkedHashMap;
 
 @Component
-@PropertySource("classpath:student.properties")
-@ConfigurationProperties("student")
+//@PropertySource("classpath:student.properties")
+//@ConfigurationProperties("student")
 public class Student {
     @NotNull
     @Size(min=1, message="is required")
     private String firstName;
+
     @NotNull
     @Size(min=1, message="is required")
     private String lastName;
 
     private String language;
     private String country;
+
+    @Pattern(regexp = "^[a-z1-Z0-9]{5}", message="only 5 chars/digits")
+    private String postalCode;
+
+    @Min(value=0, message=" must be > 0")
+    @Max(value=100, message=" must be <= 100")
+    private int masterPercentage;
 
     LinkedHashMap<String, String> countriesOptions;
     LinkedHashMap<String, String> languagesOptions;
@@ -30,6 +37,14 @@ public class Student {
 
     public Student() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in no-arg constructor for "+this);
+        this.countriesOptions = new LinkedHashMap<>();
+        this.countriesOptions.put("FR", "France");
+        this.countriesOptions.put("US", "United States");
+
+        this.languagesOptions = new LinkedHashMap<>();
+        this.languagesOptions.put("Java", "Java");
+        this.languagesOptions.put("C#", "C sharp");
+        this.languagesOptions.put("Python", "Python");
     }
     public String getFirstName() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in Student "+this+" getter to return " + firstName + " as firstName.");
@@ -39,6 +54,22 @@ public class Student {
     public void setFirstName(String firstName) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in "+this+" setter to instantiate Student with " + firstName + " as firstName.");
         this.firstName = firstName;
+    }
+
+    public int getMasterPercentage() {
+        return masterPercentage;
+    }
+
+    public void setMasterPercentage(int masterPercentage) {
+        this.masterPercentage = masterPercentage;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getLanguage() {

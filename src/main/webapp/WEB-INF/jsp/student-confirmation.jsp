@@ -12,7 +12,11 @@
     <br><br>
     Country : ${student.country}
     <br><br>
+    Postal Code : ${student.postalCode}
+    <br><br>
     Favorite Language : ${student.language}
+    <br><br>
+    Mastering % : ${student.masterPercentage}
     <br><br>
     Operating Systems:
     <ul>
