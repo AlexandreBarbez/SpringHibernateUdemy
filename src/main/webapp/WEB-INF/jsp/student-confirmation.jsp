@@ -18,6 +18,8 @@
     <br><br>
     Mastering % : ${student.masterPercentage}
     <br><br>
+    Course code : ${student.courseCode}
+    <br><br>
     Operating Systems:
     <ul>
         <c:forEach var="temp" items="${student.operatingSystems}">

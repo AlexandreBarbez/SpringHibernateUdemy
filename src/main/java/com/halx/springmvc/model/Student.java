@@ -1,8 +1,7 @@
 package com.halx.springmvc.model;
 
 import com.halx.spring.utils.Utils;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
+import com.halx.springmvc.model.validator.CourseCode;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.*;
@@ -32,9 +31,12 @@ public class Student {
     @Max(value=100, message=" must be <= 100")
     private int masterPercentage;
 
-    LinkedHashMap<String, String> countriesOptions;
-    LinkedHashMap<String, String> languagesOptions;
+    @CourseCode(value="LUV" ,message="Course code must start with LUV")
+    private String courseCode;
 
+    LinkedHashMap<String, String> countriesOptions;
+
+    LinkedHashMap<String, String> languagesOptions;
     String[] operatingSystems;
 
     public Student() {
@@ -48,11 +50,11 @@ public class Student {
         this.languagesOptions.put("C#", "C sharp");
         this.languagesOptions.put("Python", "Python");
     }
+
     public String getFirstName() {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in Student "+this+" getter to return " + firstName + " as firstName.");
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in "+this+" setter to instantiate Student with " + firstName + " as firstName.");
         this.firstName = firstName;
@@ -82,15 +84,9 @@ public class Student {
         this.language = language;
     }
 
-    public String getLastName() {
-        System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in Student "+this+" getter to return " + lastName + " as lastName.");
-        return lastName;
-    }
+    public String getLastName() { return lastName; }
 
-    public void setLastName(String lastName) {
-        System.out.println(Utils.getDateFormattedLikeSpringBoot() + " - Student : in "+this+" setter to instantiate Student with " + lastName + " as lastName.");
-        this.lastName = lastName;
-    }
+    public void setLastName(String lastName) { this.lastName = lastName;}
 
     public String getCountry() {
         return country;
@@ -113,4 +109,8 @@ public class Student {
     public String[] getOperatingSystems() { return operatingSystems; }
 
     public void setOperatingSystems(String[] operatingSystems) { this.operatingSystems = operatingSystems; }
+
+    public String getCourseCode() { return courseCode; }
+
+    public void setCourseCode(String courseCode) { this.courseCode = courseCode; }
 }
